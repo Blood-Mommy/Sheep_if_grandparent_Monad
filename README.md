@@ -10,10 +10,10 @@ data Sheep = Sheep { sheepId :: Int, name :: String, children :: [Int] }
 -- Example sheep family
 sheepFamily :: [Sheep]
 sheepFamily =
-  [ Sheep 1 "Wooly" [2, 3]
-  , Sheep 2 "Fluffy" [4]
-  , Sheep 3 "Cotton" []
-  , Sheep 4 "Snow" []
+  [ Sheep 1 "Julija" [2, 3]
+  , Sheep 2 "Angelina" [4]
+  , Sheep 3 "Marina" []
+  , Sheep 4 "Gleb" []
   ]
 
 ---------------------------------------------------------------------------------------------------------------------------------
