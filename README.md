@@ -20,17 +20,17 @@ sheepFamily =
 -- Find a sheep by its ID
 ---------------------------------------------------------------------------------------------------------------------------------
 findSheep :: Int -> [Sheep] -> Maybe Sheep
-findSheep sid [] = Nothing
-findSheep sid (s:ss)
-  | sheepId s == sid = Just s
-  | otherwise        = findSheep sid ss
+findSheep sheepmb [] = Nothing
+findSheep sheepmb (s:ss)
+  | sheepId s == sheepmb = Just s
+  | otherwise        = findSheep sheepmb ss
 
 ---------------------------------------------------------------------------------------------------------------------------------
 -- Check if a sheep is a grandparent
 ---------------------------------------------------------------------------------------------------------------------------------
 isGrandparent :: Int -> [Sheep] -> Bool
-isGrandparent sid family =
-  case findSheep sid family of
+isGrandparent sheepmb family =
+  case findSheep sheepmb family of
     Nothing -> False  -- sheep not found
     Just sheep ->
       let kids = children sheep
@@ -42,16 +42,16 @@ isGrandparent sid family =
       in not (null grandkids)  -- if any grandkids exist
 
 ---------------------------------------------------------------------------------------------------------------------------------
--- Main part: user interaction
+-- Main part
 ---------------------------------------------------------------------------------------------------------------------------------
 main :: IO ()
 main = do
   putStrLn "Sheep family:"
   mapM_ print sheepFamily
 
-  putStrLn "\nEnter sheep ID to check if it is a grandparent:"
+  putStrLn "\nPlease, write sheep ID:"
   input <- getLine
-  let sid = read input :: Int
-  if isGrandparent sid sheepFamily
-     then putStrLn "Yes! This sheep is a grandparent 🐑👴"
-     else putStrLn "No, this sheep is not a grandparent."
+  let sheepmb = read input :: Int
+  if isGrandparent sheepmb sheepFamily
+     then putStrLn "This sheep is a grandparent"
+     else putStrLn "This sheep is not a grandparent."
